@@ -1,5 +1,5 @@
 import 'package:bloc_auth/design/theme/app_theme.dart';
-import 'package:bloc_auth/feature/auth/page/login_page.dart';
+import 'package:bloc_auth/feature/main/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -18,7 +18,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
-      home: const LoginPage(),
+      home: const MainPage(),
     );
   }
 }

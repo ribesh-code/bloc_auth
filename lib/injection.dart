@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc_auth/domain/contracts/auth/auth_contract.dart';
 import 'package:bloc_auth/domain/contracts/local_datasource_contract/local_datasource_contract.dart';
+import 'package:bloc_auth/feature/auth/bloc/auth_bloc.dart';
 import 'package:bloc_auth/feature/auth/usecase/login_usecase.dart';
 import 'package:bloc_auth/infrastructure/local_datasource/local_datasource_impl.dart';
 import 'package:bloc_auth/infrastructure/network/network_client.dart';
@@ -36,6 +37,12 @@ Future<void> init() async {
     ..registerLazySingleton<LoginUseCase>(
       () => LoginUseCase(
         authContract: getItInstance<AuthContract>(),
+      ),
+    )
+    ..registerLazySingleton(
+      () => AuthBloc(
+        localStorage: getItInstance<LocalDataSourceContract>(),
+        loginUseCase: getItInstance<LoginUseCase>(),
       ),
     );
 }
